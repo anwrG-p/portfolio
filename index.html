@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Anwer Guemri | AI Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --bg: #f4f7f6;
+            --text: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: white;
+            padding: 40px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin: 0;
+            color: var(--primary);
+            font-size: 2.5rem;
+        }
+        p.subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-top: 10px;
+        }
+        .contact-info {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .contact-info a, .contact-info span {
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+        .contact-info a:hover {
+            color: var(--accent);
+        }
+        .btn-download {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn-download:hover {
+            background-color: #2980b9;
+        }
+        .cv-preview {
+            width: 100%;
+            height: 1000px;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: white;
+            border-radius: 8px;
+        }
+        .mobile-warning {
+            display: none;
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .cv-preview { height: 500px; }
+            h1 { font-size: 1.8rem; }
+            .mobile-warning { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Mohamed Anwer Guemri</h1>
+            <p class="subtitle">AI Engineering Student & Tech Lead</p>
+            
+            <div class="contact-info">
+                <span><i class="fas fa-map-marker-alt"></i> Tunis, Tunisia</span>
+                <span><i class="fas fa-phone"></i> Available upon request</span>
+                <a href="mailto:anouarguemri1@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://github.com/anwrG-p" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/anwer-guemri-259b5532b" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+
+            <a href="Anwr_CV_Private.pdf" class="btn-download" download>
+                <i class="fas fa-file-download"></i> Download Full CV
+            </a>
+        </header>
+
+        <p class="mobile-warning">
+            <em>Preview below. If it doesn't load on your mobile device, please use the Download button above.</em>
+        </p>
+
+        <object data="Anwr_CV_Public.pdf" type="application/pdf" class="cv-preview">
+            <p>Your browser does not support PDF embedding. <a href="Anwr_CV_Private.pdf">Download the PDF</a>.</p>
+        </object>
+    </div>
+
+</body>
+</html>
