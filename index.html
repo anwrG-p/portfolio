@@ -7,126 +7,333 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2c3e50;
-            --accent: #3498db;
-            --bg: #f4f7f6;
-            --text: #333;
+            --primary-text: #333;
+            --secondary-text: #555;
+            --accent-color: #2c3e50; /* Dark blue/slate */
+            --link-color: #2980b9;
+            --border-color: #ccc;
+            --bg-color: #f9f9f9;
+            --paper-color: #ffffff;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-text);
             margin: 0;
-            padding: 0;
-            background-color: var(--bg);
-            color: var(--text);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .container {
-            width: 100%;
-            max-width: 900px;
             padding: 20px;
-            box-sizing: border-box;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
         }
+
+        .resume-container {
+            background-color: var(--paper-color);
+            width: 100%;
+            max-width: 850px; /* A4 width approx */
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+
+        /* Header */
         header {
             text-align: center;
             margin-bottom: 30px;
-            background: white;
-            padding: 40px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
+        
         h1 {
             margin: 0;
-            color: var(--primary);
-            font-size: 2.5rem;
+            font-size: 2.2rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        p.subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            margin-top: 10px;
-        }
+
         .contact-info {
-            margin-top: 20px;
+            margin-top: 10px;
+            font-size: 0.95rem;
             display: flex;
             justify-content: center;
-            gap: 20px;
             flex-wrap: wrap;
+            gap: 15px;
+            color: var(--secondary-text);
         }
-        .contact-info a, .contact-info span {
-            color: var(--primary);
+
+        .contact-info a {
+            color: var(--secondary-text);
             text-decoration: none;
-            display: flex;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: var(--link-color);
+        }
+
+        /* Download Button */
+        .download-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .btn-download {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-weight: 500;
-        }
-        .contact-info a:hover {
-            color: var(--accent);
-        }
-        .btn-download {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 12px 30px;
-            background-color: var(--accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
             transition: background 0.3s;
         }
+
         .btn-download:hover {
-            background-color: #2980b9;
+            background-color: var(--link-color);
         }
-        .cv-preview {
-            width: 100%;
-            height: 1000px;
-            border: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            background: white;
-            border-radius: 8px;
+
+        /* Sections */
+        section {
+            margin-bottom: 25px;
         }
-        .mobile-warning {
-            display: none;
-            text-align: center;
-            color: #666;
-            margin-bottom: 20px;
+
+        h2 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        /* Lists & content */
+        ul {
+            list-style-type: none; /* Remove default bullets */
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .bullet-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 5px;
+            color: var(--secondary-text);
+            font-size: 0.95rem;
+        }
+        
+        .bullet-list li {
+            margin-bottom: 4px;
+        }
+
+        /* Flex layouts for headers within sections */
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .entry-title {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .entry-meta {
+            font-style: italic;
             font-size: 0.9rem;
+            color: var(--secondary-text);
         }
-        @media (max-width: 768px) {
-            .cv-preview { height: 500px; }
-            h1 { font-size: 1.8rem; }
-            .mobile-warning { display: block; }
+
+        .tech-stack {
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        /* Skills Table style */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 10px;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        
+        .skill-category {
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .resume-container {
+                padding: 20px;
+            }
+            .entry-header {
+                flex-direction: column;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 2px;
+                margin-bottom: 15px;
+            }
+            .btn-download {
+                width: 100%;
+                justify-content: center;
+                box-sizing: border-box;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="resume-container">
+        
         <header>
             <h1>Mohamed Anwer Guemri</h1>
-            <p class="subtitle">AI Engineering Student & Tech Lead</p>
-            
             <div class="contact-info">
                 <span><i class="fas fa-map-marker-alt"></i> Tunis, Tunisia</span>
                 <span><i class="fas fa-phone"></i> Available upon request</span>
-                <a href="mailto:anouarguemri1@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-                <a href="https://github.com/anwrG-p" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                <a href="https://www.linkedin.com/in/anwer-guemri-259b5532b" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="mailto:anouarguemri1@gmail.com"><i class="fas fa-envelope"></i> anouarguemri1@gmail.com</a>
             </div>
-
-            <a href="Anwr_CV_Private.pdf" class="btn-download" download>
-                <i class="fas fa-file-download"></i> Download Full CV
-            </a>
+            <div class="contact-info">
+                <a href="https://www.linkedin.com/in/anwer-guemri-259b5532b" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <span>|</span>
+                <a href="https://github.com/anwrG-p" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
         </header>
 
-        <p class="mobile-warning">
-            <em>Preview below. If it doesn't load on your mobile device, please use the Download button above.</em>
-        </p>
+        <div class="download-section">
+            <a href="Anwr_CV_Private.pdf" class="btn-download" download>
+                <i class="fas fa-file-pdf"></i> Download Full PDF Version
+            </a>
+        </div>
 
-        <object data="Anwr_CV_Public.pdf" type="application/pdf" class="cv-preview">
-            <p>Your browser does not support PDF embedding. <a href="Anwr_CV_Private.pdf">Download the PDF</a>.</p>
-        </object>
+        <section>
+            <h2>Professional Summary</h2>
+            <p>
+                AI Engineering student with strong leadership experience in technical teams, specializing in machine learning, deep learning, and full-stack solutions. Experienced in building autonomous systems, automations, and multidisciplinary engineering projects focused on robotics and computer vision.
+            </p>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">Languages</div>
+                <div>Python, C++, SQL, JavaScript, LabVIEW, Bash</div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">AI / ML</div>
+                <div>PyTorch, scikit-learn, Computer Vision, Deep Learning, Model Optimization</div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">Web/Backend</div>
+                <div>React, Node.js, Express.js, MongoDB, n8n (Automation)</div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">Tools</div>
+                <div>Linux, Git, Docker, Robotics Systems</div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">Soft Skills</div>
+                <div>Leadership, Technical Pitching, Team Management, Project Planning</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Key Projects</h2>
+            
+            <div style="margin-bottom: 15px;">
+                <div class="entry-header">
+                    <span class="entry-title">Fully Autonomous Disaster & People Detection Drone</span>
+                </div>
+                <div class="tech-stack">Python, Computer Vision, DL, Linux</div>
+                <ul class="bullet-list">
+                    <li>Engineered a fully autonomous drone system designed for real-time disaster assessment and human detection.</li>
+                    <li>Spearheaded the model pipeline including data collection, setup, training, and hyperparameter optimization.</li>
+                    <li>Implemented rigorous system security protocols and deployed the solution on edge Linux hardware.</li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="entry-header">
+                    <span class="entry-title">Full-Stack Automation Architectures</span>
+                </div>
+                <div class="tech-stack">n8n, Node.js, React</div>
+                <ul class="bullet-list">
+                    <li>Designed and deployed complex automation workflows integrating multiple APIs for business logic optimization.</li>
+                    <li>Developed custom full-stack web interfaces to monitor and control automation processes.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Experience</h2>
+            
+            <div style="margin-bottom: 15px;">
+                <div class="entry-header">
+                    <span class="entry-title">Tech Lead</span>
+                    <span class="entry-meta">2023 – Present</span>
+                </div>
+                <div class="entry-meta">Freelance Projects (Automation & Web) | Remote</div>
+                <ul class="bullet-list">
+                    <li>Directing a technical team of 5 developers in building scalable web solutions and automation workflows.</li>
+                    <li>Managing full client lifecycle from requirement analysis and technical planning to final deployment.</li>
+                    <li>Optimizing development pipelines, resulting in faster delivery times and higher code quality.</li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="entry-header">
+                    <span class="entry-title">Co-Founder & Aeronautics Branch Lead</span>
+                    <span class="entry-meta">2022 – 2024</span>
+                </div>
+                <div class="entry-meta">HIDE Tech Club | Tunis, Tunisia</div>
+                <ul class="bullet-list">
+                    <li>Supervised technical workshops and led multidisciplinary teams in aeronautics and robotics projects.</li>
+                    <li>Led the team to win <strong>1st Place at Dronathon 2.0</strong>, outperforming competing engineering clubs.</li>
+                    <li>Mentored junior members in flight dynamics, embedded systems, and project management.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div style="margin-bottom: 10px;">
+                <div class="entry-header">
+                    <span class="entry-title">Higher Institute of Digital Engineering</span>
+                    <span class="entry-meta">Tunis, Tunisia</span>
+                </div>
+                <div class="entry-header">
+                    <span class="entry-meta">AI Engineering Degree</span>
+                    <span class="entry-meta">2024 – 2029</span>
+                </div>
+            </div>
+            <div>
+                <div class="entry-header">
+                    <span class="entry-title">Habib Maazoun High School</span>
+                    <span class="entry-meta">Sfax, Tunisia</span>
+                </div>
+                <div class="entry-header">
+                    <span class="entry-meta">Mathematics Baccalaureate (Very Good Honors)</span>
+                    <span class="entry-meta">2020 – 2024</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Languages & Interests</h2>
+            <div class="skills-grid">
+                <div class="skill-category">Languages</div>
+                <div>Arabic (Native), English (Fluent), French (B2), Spanish (A2)</div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">Interests</div>
+                <div>Robotics, Aeronautics, Problem-Solving, Competitive Coding</div>
+            </div>
+        </section>
+
     </div>
 
 </body>
